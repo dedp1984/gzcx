@@ -12,7 +12,7 @@ angular.module('app')
       console.log("init AppCtrl");
       // config
       $scope.app = {
-        name: '申请管理系统',
+        name: '工资查询系统',
         version: '1.3.3',
         // for chart colors
         color: {

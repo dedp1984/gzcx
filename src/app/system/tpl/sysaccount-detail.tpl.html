@@ -41,8 +41,12 @@
                 <div class="line line-dashed b-b line-sm pull-in"></div>
                 <div class="row">
                     <div class="col-sm-4">
-                        <label>性质:</label>
-                        <input type="text" class="form-control" ng-model="item.property"/>
+                        <label>可查看数据范围:</label>
+                        <select  class="form-control" ng-model="item.property" required>
+                            <option value="1">全公司</option>
+                            <option value="2">本部门</option>
+                            <option value="3">个人</option>
+                        </select>
                     </div>
                     <div class="col-sm-4">
                         <label>状态:</label>

@@ -49,10 +49,7 @@ angular.module('app')
               //经销商管理-查询经销商列表
               .state('app.sysbranchs.list',{
                   url:'/list',
-                  templateUrl:'app/system/tpl/sysbranch-list.html',
-                  controller:function($scope){
-                      $scope.getList();
-                  }
+                  templateUrl:'app/system/tpl/sysbranch-list.html'
               })
               //经销商管理-增加经销商
               .state('app.sysbranchs.add',{

@@ -1,7 +1,7 @@
 angular.module('app')
     .factory('AuthRestangular',['Restangular','modal',function(Restangular,modal) {
         return Restangular.withConfig(function(RestangularConfigurer) {
-            RestangularConfigurer.setBaseUrl('http://127.0.0.1:8080/carcredit/');
+            RestangularConfigurer.setBaseUrl('http://127.0.0.1:8080/rsgl/');
             RestangularConfigurer.setErrorInterceptor(function(response, deferred, responseHandler) {
                 modal.error("系统错误，请重试");
             });
@@ -10,7 +10,7 @@ angular.module('app')
     .factory('CarCreditRestangular',['Restangular','$state','modal','$rootScope','$injector',function(Restangular,$state,modal,$rootScope,$injector) {
         return Restangular.withConfig(function(RestangularConfigurer) {
 
-            RestangularConfigurer.setBaseUrl('http://127.0.0.1:8080/carcredit/api');
+            RestangularConfigurer.setBaseUrl('http://127.0.0.1:8080/rsgl/api');
             RestangularConfigurer.setFullRequestInterceptor(function(element, operation, route, url, headers, params, httpConfig) {
                 if(operation=='getList'){
                     params.pageSize=params.pageSize||$rootScope.paginationInfo.pageSize;

@@ -35,7 +35,7 @@
                 <tbody>
                     <tr ng-repeat="item in items">
                         <td>{{item.id}}</td>
-                        <td>{{item.name}}</td>
+                        <td> <a href="javascript:" ng-click="detail(item.id)">{{item.name}}</a></td>
                         <td>{{item.sysBranch.branchname}}</td>
                         <td>{{item.address}}</td>
                         <td>{{item.mobile}}</td>

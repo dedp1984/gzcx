@@ -43,7 +43,7 @@ app.controller('SysAccountController', ['$scope','$rootScope','$state','toaster'
         })
     };
     $scope.getSysBranchList=function(){
-        $scope.branchs=CarCreditRestangular.all('branchs').getList({pageSize:10000}).$object;
+        $scope.branchs=CarCreditRestangular.all('branchs').all("list").getList().$object;
     };
     $scope.getAllSysRoles=function(){
        CarCreditRestangular.all('sysroles').getList().then(function(response){

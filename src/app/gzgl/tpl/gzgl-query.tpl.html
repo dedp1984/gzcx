@@ -1,0 +1,100 @@
+<div class="wrapper-md" ng-init="initList()">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            工资明细
+        </div>
+        <div class="row wrapper">
+            <div class="col-sm-2">
+                <select  class="form-control"  ng-change="onBranchChanged()"  ng-model="vm.branchid" ng-options="o.id as o.branchname for o in branchs" >
+                    <option value="">请选择部门</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <select  class="form-control"    ng-model="vm.accountid" ng-options="o.id as o.name for o in accounts" >
+                    <option value="">请选择姓名</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <input type="month" ng-model="vm.month" class="input-sm form-control" placeholder="发放月份">
+            </div>
+            <div class="col-sm-2">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-sm btn-default" type="button" ng-click="query()"><i class="fa fa-search m-r-sm"></i>查找</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>月份</th>
+                    <th>基本工资</th>
+                    <th>岗位工资</th>
+                    <th>交通补贴</th>
+                    <th>用餐补贴</th>
+                    <th>通讯补贴</th>
+                    <th>提成及奖金</th>
+                    <th>其他应发</th>
+                    <th>考勤扣款</th>
+                    <th>应发金额</th>
+                    <th>养老保险</th>
+                    <th>医疗保险</th>
+                    <th>失业保险</th>
+                    <th>公积金</th>
+                    <th>个税</th>
+                    <th>实发金额</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.acctName}}</td>
+                        <td>{{item.month}}</td>
+                        <td>{{item.jbgz}}</td>
+                        <td>{{item.gwgz}}</td>
+                        <td>{{item.jtbt}}</td>
+                        <td>{{item.ycbt}}</td>
+                        <td>{{item.txbt}}</td>
+                        <td>{{item.tcjjj}}</td>
+                        <td>{{item.qtyf}}</td>
+                        <td>{{item.kqkk}}</td>
+                        <td>{{item.yfje}}</td>
+                        <td>{{item.ylbx}}</td>
+                        <td>{{item.yilbx}}</td>
+                        <td>{{item.sybx}}</td>
+                        <td>{{item.gjj}}</td>
+                        <td>{{item.gs}}</td>
+                        <td>{{item.sfje}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table" style="margin: 0px; z-index: 99;position: inherit; ">
+                <tfoot>
+                    <tr ng-if="paginationInfo.totalItem==0">
+                        <td>
+                            无查询结果
+                        </td>
+                    </tr>
+                    <tr  ng-if="paginationInfo.totalItem>0">
+                        <td>
+                            <div class="pull-left m-t-lg ">
+                                总共{{paginationInfo.totalItem}}条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 每页显示：{{paginationInfo.pageSize}}条
+                            </div>
+                        </td>
+                        <td>
+                            <div class="pull-right" style="margin-right: 0px">
+                                <uib-pagination boundary-links="true" total-items="paginationInfo.totalItem" ng-model="paginationInfo.curPage"
+                                                items-per-page="paginationInfo.pageSize" ng-change="pageChanged()"
+                                                max-size="paginationInfo.maxSize" boundary-link-numbers="true" rotate="false"
+                                                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                </uib-pagination>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

@@ -16,5 +16,6 @@ angular.module('app', [
     'loginModule',
     'restangular',
     'toaster',
-    'fast'
+    'fast',
+    'angularFileUpload'
 ]);

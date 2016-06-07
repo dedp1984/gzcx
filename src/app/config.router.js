@@ -13,7 +13,7 @@ angular.module('app')
           $rootScope.resetCache=function(){
               $rootScope.paginationInfo = {
                   totalItem:0,
-                  pageSize:10,
+                  pageSize:20,
                   curPage:1,
                   maxSize:5
               };
@@ -54,7 +54,7 @@ angular.module('app')
       function ($stateProvider,   $urlRouterProvider) {
           
           $urlRouterProvider
-              .otherwise('/app/index');
+              .otherwise('/access/signin');
           $stateProvider
               .state('app', {
                   abstract: true,

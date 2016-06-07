@@ -1,0 +1,27 @@
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            上传工资明细{{uploadStatus}}
+        </div>
+        <div class="row wrapper">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">工资明细：</label>
+                <div class="col-sm-6">
+                    <input ui-jq="filestyle" type="file" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s"
+                           nv-file-select
+                           uploader="uploader"
+                           required>
+                </div>
+            </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <div class="row wrapper">
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <button type="submit" ng-click="upload()" class="btn btn-primary">导入明细</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
