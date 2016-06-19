@@ -1,0 +1,32 @@
+<section id="section" layout="column" laytout-margin  class="md-whiteframe-2dp" ng-init="initList()">
+    <md-divider></md-divider>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>部门管理</h3>
+            <span flex></span>
+            <md-button class="md-raised md-hue-2" ng-click="addDept()"><i class="fa fa-plus"></i>增加部门</md-button>
+        </div>
+    </md-toolbar>
+    <md-divider></md-divider>
+    <md-content>
+        <div class="table-responsive">
+            <table  class="table table-striped b-t b-light">
+                <thead>
+                    <tr>
+                        <th>部门名称</th>
+                        <th>编辑</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.deptname}}</td>
+                        <td>
+                            <a href="javascript:" ng-click="modifyDept(item)">编辑</a>
+                            <a href="javascript:" ng-click="deleteDept(item)">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </md-content>
+</section>

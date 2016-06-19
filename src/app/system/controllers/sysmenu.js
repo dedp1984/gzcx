@@ -4,7 +4,9 @@
   // signin controller
 app.controller('SysMenuController', ['$scope','$rootScope','$state','toaster','CarCreditRestangular',function($scope,$rootScope,$state,toaster,CarCreditRestangular) {
     $scope.getList=function(params){
-        $scope.items=CarCreditRestangular.all('menus').getList(params).$object;
+        CarCreditRestangular.all('menus').getList(params).then(function(response){
+            $scope.items=response;
+        });
     };
     $scope.pageChanged=function(){
         $scope.getList();

@@ -1,0 +1,43 @@
+<section id="section"  layout="column" class="md-whiteframe-1dp">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>创建模板</h3>
+            <span flex></span>
+            <md-button class="md-raised md-hue-2" ng-click="save()"><i class="fa fa-save"></i>保存模板</md-button>
+            <md-button class="md-raised md-hue-2" ui-sref="app.question.template.list"><i class="fa fa-reply"></i>返回</md-button>
+        </div>
+    </md-toolbar>
+    <md-divider></md-divider>
+    <md-content laytou="column" layout-padding>
+        <div layout="row" layout-margin>
+            <div flex="50" >
+                <label>模板名称</label>
+                <input type="text" class="form-control"  ng-model="tpl.tplname" required/>
+            </div>
+        </div>
+        <div layout="row" layout-margin ng-repeat="dtl in tpl.tplDtls">
+            <div flex="5">
+                <label>序号</label>
+                <input type="number" class="form-control"  ng-model="dtl.showseq" required>
+            </div>
+            <div flex="60">
+                <label>调查内容</label>
+                <input type="text" class="form-control" ng-model="dtl.content" required></input>
+            </div>
+            <div flex="20">
+                <label>可选答案</label>
+                <select  class="selectpicker"  ng-model="dtl.val" ng-options="o.id as o.msg for o in sels"  multiple required>
+                    <option value="">请选择</option>
+                </select>
+                <select class="selectpicker" multiple>
+                    <option>Mustard</option>
+                    <option>Ketchup</option>
+                    <option>Relish</option>
+                </select>
+
+            </div>
+            <md-button class="md-fab md-mini md-primary" ng-click="addOne($index)"><i class=" fa fa-plus"  aria-hidden="true"></i></md-button>
+            <md-button class="md-fab md-mini md-warn" ng-click="delOne($index)"><i class="fa fa-minus" aria-hidden="true"></i></md-button>
+        </div>
+    </md-content>
+</section>

@@ -1,0 +1,92 @@
+'use strict';
+
+/* Controllers */
+angular.module("question.controllers")
+    .controller("ActivityController",function($scope,CarCreditRestangular,$mdDialog,$mdToast,$state,$rootScope){
+
+        $scope.initList=function(){
+            $scope.items=CarCreditRestangular.all("/question/activity").getList().$object;
+        };
+        $scope.add=function(){
+            $scope.depts=CarCreditRestangular.all("/question/dept").getList().$object;
+            $scope.tpls=CarCreditRestangular.all("/question/template").getList().$object;
+            $scope.activity={};
+            $scope.activity.actdepts=[{deptid:'',tplid:''}];
+            $state.go("app.question.activity.add");
+        };
+        $scope.save=function(){
+            CarCreditRestangular.all('/question/activity').post($scope.activity).then(function(response){
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('增加活动成功')
+                        .position('right')
+                        .parent('section')
+                        .hideDelay(3000)
+                );
+                $rootScope.back();
+            })
+        };
+        $scope.edit=function(item){
+            $scope.depts=CarCreditRestangular.all("/question/dept").getList().$object;
+            $scope.tpls=CarCreditRestangular.all("/question/template").getList().$object;
+            CarCreditRestangular.one('/question/activity',item.id).get().then(function(response){
+                $scope.activity=response;
+                $state.go('app.question.activity.edit');
+            })
+        };
+        $scope.update=function(){
+            $mdDialog.show(
+                $mdDialog.confirm({
+                    title:'操作确认',
+                    content:'确认修改活动？',
+                    ok: '确认',
+                    cancel:'取消'
+                })
+            ).then(function(){
+                    $scope.activity.save().then(function(response){
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent('修改活动成功')
+                                .position('right')
+                                .parent('section')
+                                .hideDelay(3000)
+                        );
+                        $state.go("app.question.activity.list");
+                    })
+                })
+        }
+        $scope.delete=function(item){
+            $mdDialog.show(
+                $mdDialog.confirm({
+                    title:'操作提醒',
+                    content:'确认删除活动',
+                    ok:'确定',
+                    cancel:'取消'
+                })
+            ).then(function(){
+                    item.remove().then(function(){
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent('删除活动成功')
+                                .position('right')
+                                .parent('section')
+                                .hideDelay(3000)
+                        );
+                        $state.reload();
+                    });
+
+                })
+        };
+        $scope.addOne=function(index){
+            $scope.activity.actdepts.push({deptid:'',tplid:''});
+        }
+        $scope.delOne=function(index){
+            if($scope.activity.actdepts.length==1){
+                $scope.activity.actdepts=[{deptid:'',tplid:''}];
+            }else{
+               $scope.activity.actdepts= $scope.activity.actdepts.splice(index,1);
+            }
+
+        }
+    })
+;

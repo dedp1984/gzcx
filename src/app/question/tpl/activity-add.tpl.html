@@ -1,0 +1,35 @@
+<section id="section"  layout="column" class="md-whiteframe-1dp">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>创建活动</h3>
+            <span flex></span>
+            <md-button class="md-raised md-hue-2" ng-click="save()"><i class="fa fa-save"></i>保存活动</md-button>
+            <md-button class="md-raised md-hue-2" ng-click="back()"><i class="fa fa-reply"></i>返回</md-button>
+        </div>
+    </md-toolbar>
+    <md-divider></md-divider>
+    <md-content layout="column" layout-padding>
+        <div layout="row" layout-margin>
+            <div flex="30" flex-offset="20" >
+                <label>活动名称</label>
+                <input type="text" class="form-control"  ng-model="activity.actname" required/>
+            </div>
+        </div>
+        <div layout="row" layout-margin ng-repeat="actdept in activity.actdepts">
+            <md-input-container flex="40">
+                <label>被调查部门</label>
+                <md-select  ng-model="actdept.deptid" placeholder="请选择"   required>
+                    <md-option ng-value="dept.id" ng-repeat="dept in depts">{{ dept.deptname }}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex="40">
+                <label>调查所用模板</label>
+                <md-select  ng-model="actdept.tplid" placeholder="请选择"  required>
+                    <md-option ng-value="tpl.id" ng-repeat="tpl in tpls">{{ tpl.tplname }}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button class="md-fab md-mini md-primary" ng-click="addOne($index)"><i class=" fa fa-plus"  aria-hidden="true"></i></md-button>
+            <md-button class="md-fab md-mini md-warn" ng-click="delOne($index)"><i class="fa fa-minus" aria-hidden="true"></i></md-button>
+        </div>
+    </md-content>
+</section>

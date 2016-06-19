@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app', [
-    'ngAnimate',
+    'ngMaterial',
     'ngCookies',
     'ngResource',
     'ngSanitize',
@@ -17,5 +17,6 @@ angular.module('app', [
     'restangular',
     'toaster',
     'fast',
-    'angularFileUpload'
+    'angularFileUpload',
+    'question'
 ]);

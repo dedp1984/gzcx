@@ -1,0 +1,33 @@
+<div layout="row" ng-init="getActivitys()" >
+    <div flex="60" flex-offset="20" class="md-whiteframe-5dp" layout="column">
+        <h3 layout="row" layout-align="center center"><b>{{actdept.activity.actname}}</b></h3>
+        <md-divider></md-divider>
+        <md-content layout-padding>
+            <form name="questionFrom" layout="column" >
+                <div layout="row" layout-padding>
+                    <div flex="40" flex-offset="10">
+                        <h4>被评价部门：<span style="text-decoration:underline">{{actdept.dept.deptname}}</span></h4>
+                    </div>
+                    <div flex="40">
+                        <h4>填写时间：<span style="text-decoration:underline">{{sysDate}}</span></h4>
+                    </div>
+                </div>
+                <section layout="column" layout-padding ng-repeat="item in actdept.tpl">
+                    <h4><b>{{item.showseq}}、{{item.content}}</b></h4>
+                    <md-radio-group ng-model="item.result" required>
+                        <md-radio-button
+                                ng-repeat="d in item.sels"
+                                ng-value="d.id"
+                                >
+                            {{d.msg}}
+                        </md-radio-button>
+                    </md-radio-group>
+                    <md-divider></md-divider>
+                </section>
+                <div layout="row">
+                    <md-button class="md-raised md-primary"  ng-disabled="questionFrom.$invalid" ng-click="submit()" flex="10" flex-offset="85" >提交</md-button>
+                </div>
+            </form>
+        </md-content>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<section id="section" layout="column" laytout-margin  class="md-whiteframe-2dp" ng-init="initList()">
+    <md-divider></md-divider>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>调查活动管理</h3>
+            <span flex></span>
+            <md-button class="md-raised md-hue-2" ng-click="add()"><i class="fa fa-plus"></i>增加调查活动</md-button>
+        </div>
+    </md-toolbar>
+    <md-divider></md-divider>
+    <md-content>
+        <div class="table-responsive">
+            <table  class="table table-striped b-t b-light">
+                <thead>
+                    <tr>
+                        <th>活动名称</th>
+                        <th>创建日期</th>
+                        <th>创建人</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.actname}}</td>
+                        <td>{{item.createdate|mysqlDatetime}}</td>
+                        <td>{{item.createid}}</td>
+                        <td>
+                            <a href="javascript:" ng-click="edit(item)">编辑</a>
+                            <a href="javascript:" ng-click="delete(item)">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </md-content>
+</section>

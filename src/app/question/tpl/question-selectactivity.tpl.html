@@ -1,0 +1,20 @@
+<div layout="row" ng-init="getActivitys()">
+    <div flex="50" flex-offset="25" class="md-whiteframe-1dp">
+        <md-subheader>选择调查活动</md-subheader>
+        <md-divider></md-divider>
+        <md-content layout="column">
+            <table  class="table table-striped b-t b-light">
+                <tbody>
+                    <tr ng-repeat="item in activitys">
+                        <td>
+                            {{item.actname}}
+                        </td>
+                        <td>
+                            <a href="javascript:" ng-click="selectActDept(item)">选择</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-content>
+    </div>
+</div>

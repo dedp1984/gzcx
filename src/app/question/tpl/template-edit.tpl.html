@@ -1,0 +1,34 @@
+<section id="section"  layout="column" class="md-whiteframe-1dp">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>编辑模板</h3>
+            <span flex></span>
+            <md-button class="md-raised md-hue-2" ng-click="update()"><i class="fa fa-save"></i>保存模板</md-button>
+            <md-button class="md-raised md-hue-2" ui-sref="app.question.template.list"><i class="fa fa-reply"></i>返回</md-button>
+        </div>
+    </md-toolbar>
+    <md-divider></md-divider>
+    <md-content laytou="column" layout-padding>
+        <div layout="row" layout-margin>
+            <md-input-container flex="50" >
+                <input type="text"  placeholder="模板名称"  ng-model="tpl.tplname" required >
+            </md-input-container>
+        </div>
+        <div layout="row" layout-margin ng-repeat="dtl in tpl.dtls">
+            <md-input-container flex="5" >
+                <input type="number" placeholder="序号" ng-model="dtl.showseq" required>
+            </md-input-container>
+            <md-input-container flex="60">
+                <textarea placeholder="调查内容" ng-model="dtl.content" required></textarea>
+            </md-input-container>
+            <md-input-container flex="15">
+                <label>可选答案</label>
+                <md-select multiple ng-model="dtl.sels" placeholder="请选择" ng-model-options="{trackBy: '$value.id'}" required>
+                    <md-option ng-value="item" ng-repeat="item in sels">{{ item.msg }}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button class="md-fab md-mini md-primary" ng-click="addModifyOne($index)"><i class=" fa fa-plus"  aria-hidden="true"></i></md-button>
+            <md-button class="md-fab md-mini md-warn" ng-click="delModifyOne($index)"><i class="fa fa-minus" aria-hidden="true"></i></md-button>
+        </div>
+    </md-content>
+</section>
